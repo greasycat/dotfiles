@@ -1,0 +1,97 @@
+* {
+  all: unset; //Unsets everything so you can style everything from scratch
+}
+
+//Global Styles
+.bar {
+  background-color: #3a3a3a;
+  color: #b0b4bc;
+}
+
+// Styles on classes (see eww.yuck for more information)
+
+.sidestuff slider {
+  all: unset;
+  color: #ffd5cd;
+}
+
+.metric scale trough highlight {
+  all: unset;
+  background-color: #00FFDD;
+  color: #000000;
+  border-radius: 10px;
+}
+.metric scale trough {
+  all: unset;
+  background-color: #4e4e4e;
+  border-radius: 50px;
+  min-height: 3px;
+  min-width: 50px;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+.metric scale trough highlight {
+  all: unset;
+
+  background-color: #00FFDD;
+  color: #000000;
+  border-radius: 10px;
+}
+.metric scale trough {
+  all: unset;
+  background-color: #4e4e4e;
+  border-radius: 50px;
+  min-height: 3px;
+  min-width: 50px;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+.label {
+    font-family: SauceCodePro Nerd Font, DejaVuSansMono, Symbola, WenQuanYi Micro Hei;
+}
+.label-ram {
+  font-size: large;
+font-family: SauceCodePro Nerd Font;
+}
+.workspaces-widget {
+}
+.workspaces-box {
+}
+.workspaces-box :hover {
+  color: #00FFDD;
+  background-color: #363636;
+}
+
+
+.workspace-entry
+{
+    padding-left: 10px;
+    // border-right: solid 1px;
+    background-color: #363636;
+    font-family: SauceCodePro Nerd Font, DejaVuSansMono, Symbola, WenQuanYi Micro Hei;
+}
+
+.current {
+    padding-left: 10px;
+    // background-color: #202020;
+    background-color: gray;
+    color: black;
+}
+
+.workspaces-button-text {
+}
+
+.time {
+    margin-right: 10px;
+    font-family: SauceCodePro Nerd Font, DejaVuSansMono, Symbola;
+}
+
+.active_window {
+}
+
+
+// bold
+
+
+
+

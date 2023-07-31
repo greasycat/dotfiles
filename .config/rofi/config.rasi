@@ -1,5 +1,5 @@
 configuration {
-/*	modes: "window,drun,run,ssh";*/
+	modes: "window,drun,run,ssh";
 /*	font: "mono 12";*/
 /*	location: 0;*/
 /*	yoffset: 0;*/
@@ -149,4 +149,4 @@ configuration {
       sorting-method:    "name";
   }
 }
-@theme "nord"
+@theme "/home/rongfei/.local/share/rofi/themes/nord.rasi"

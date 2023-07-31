@@ -1,0 +1,15 @@
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[user]
+	name = GreasyCat
+	email = 131315c@gmail.com
+; 	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILCvLEMaF2jAjCFasA7+OKAi9T8vAvywJgVv9vqXGvta
+; [gpg]
+; 	format = ssh
+; ; [gpg "ssh"]
+; ; 	program = /opt/1Password/op-ssh-sign
+; [commit]
+; 	gpgsign = true

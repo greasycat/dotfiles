@@ -8,7 +8,6 @@ EnumerateSkipFirst=False
 0=Control+space
 1=Zenkaku_Hankaku
 2=Hangul
-3=Super+space
 
 [Hotkey/AltTriggerKeys]
 0=Shift_L
@@ -69,9 +68,8 @@ OverrideXkbOption=False
 CustomXkbOption=
 # Force Enabled Addons
 EnabledAddons=
+# Force Disabled Addons
+DisabledAddons=
 # Preload input method to be used by default
 PreloadInputMethod=True
-
-[Behavior/DisabledAddons]
-0=cloudpinyin
 

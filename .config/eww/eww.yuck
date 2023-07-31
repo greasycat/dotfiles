@@ -1,0 +1,104 @@
+(defwidget bar []
+  (centerbox :orientation "h"
+    (workspaces)
+    (active_window_widget)
+    (sidestuff)))
+
+(defwidget sidestuff []
+  (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
+    (metric :label "VOL"
+            :value volume
+            :onchange "amixer -D pulse sset Master {}%")
+    (metric :label "CPU"
+            :value {EWW_CPU.avg} 
+            :onchange "")
+    (metric :label "MEM"
+            :value {EWW_RAM.used_mem_perc}
+            :onchange "")
+    (metric :label "/"
+            :value {round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)}
+            :onchange "")
+    (metric :label "/HOME"
+            :value {round((1 - (EWW_DISK["/home"].free / EWW_DISK["/home"].total)) * 100, 0)}
+            :onchange "")
+    (time_widget)
+    )
+)
+
+(deflisten workspaces :initial "[]" "bash ~/.config/eww/scripts/get-workspaces")
+(deflisten current_workspace :initial "1" "bash ~/.config/eww/scripts/get-active-workspace")
+(defwidget workspaces []
+  (eventbox 
+  :onscroll "bash ~/.config/eww/scripts/change-active-workspace {} ${current_workspace}" 
+  :class "workspaces-widget"
+  :halign "start"
+    (box :space-evenly true
+        :class "workspaces-box"
+      (label :text "${workspaces}${current_workspace}" :visible false)
+      (for workspace in workspaces
+        (eventbox 
+        :class "workspaces-button"
+        :onclick "hyprctl dispatch workspace ${workspace.id}"
+          (box 
+          :class "workspace-entry ${workspace.id == current_workspace ? "current" : "other"} ${workspace.windows > 0 ? "occupied" : "empty"}"
+            (label :class "workspaces-button-text"
+            :halign "start"
+            :text "${workspace.id}")
+            )
+          )
+        )
+      )
+    )
+)
+
+(deflisten active_window :initial "..." "sh ~/.config/eww/scripts/get-win-title")
+(defwidget active_window_widget []
+    (box 
+        :halign "center"
+        :class "active_window"
+        (label :class "label" :text "${active_window}")
+    )
+)
+
+
+
+(defwidget metric [label value onchange]
+  (box :orientation "h"
+       :class "metric"
+       :space-evenly false
+    (box :class "label" label)
+    (scale :min 0
+           :max 101
+           :active {onchange != ""}
+           :value value
+           :onchange onchange)))
+
+(defwidget time_widget []
+    (box 
+        :orientation "h"
+        :class "time"
+        :space-evenly true
+    time
+    )
+)
+
+
+
+(deflisten music :initial ""
+  "playerctl --follow metadata --format '{{ artist }} - {{ title }}' || true")
+
+(defpoll volume :interval "1s"
+  "scripts/getvol")
+
+(defpoll time :interval "1s"
+  "date '+%b %d, %Y %H:%M:%S'")
+
+(defwindow bar
+  :monitor 0
+  :windowtype "dock"
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "99%"
+                      :height "30px"
+                      :anchor "top center")
+  (bar))
